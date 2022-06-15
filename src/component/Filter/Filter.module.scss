@@ -1,0 +1,29 @@
+.content{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 50px;
+	.filter{
+		display: flex;
+		justify-content: space-between;
+		.item{
+			padding: 10px 16px;
+			margin-right: 14px;
+			background: #F9F9F9;
+			border-radius: 30px;
+			color: #2C2C2C;
+			&:hover{
+				background: #282828;
+				color: #FFFFFF;
+			}
+			&:last-child{
+				margin-right: 0px;
+			}
+		}
+		.item.active{
+			background: #282828;
+			color: #FFFFFF;
+
+		
+		}
+	}
+}
