@@ -1,0 +1,60 @@
+.cart{
+	min-height: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	.top{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	.title{
+		font-weight: 700;
+		font-size: 32px;
+		line-height: 39px;
+		letter-spacing: 0.01em;
+		color: #000000;
+	}	
+	.clearBtn{
+		cursor: pointer;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 19px;
+		color: #B6B6B6;
+	}
+	}
+	.cartItem{
+		flex: 0 0 auto;
+		margin:50px 0px 100px 0px;
+	}
+	.infos{
+			display: flex;
+			justify-content: space-between;
+		.totalPizzes{
+			font-weight: 400;
+			font-size: 22px;
+			line-height: 27px;
+			letter-spacing: 0.01em;
+			color: #000000;
+			span{
+				font-weight: 800;
+			}
+		}
+		.totalCount{
+			font-weight: 400;
+			font-size: 22px;
+			line-height: 27px;
+			letter-spacing: 0.01em;
+			color: #000000;
+			span{
+				color: #FE5F1E;
+				font-weight: 800;
+			}
+		}
+	}
+	.buttons{
+		margin-top: 30px;
+		display: flex;
+		justify-content: space-between;
+	}
+}

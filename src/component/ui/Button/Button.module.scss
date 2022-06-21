@@ -1,4 +1,5 @@
 .cartBtn{
+	cursor: pointer;
 	padding: 12px 25px;
 	display: flex;
 	justify-content: space-between;
@@ -18,6 +19,7 @@
 	}
 }
 .cardBtn{
+	cursor: pointer;
 	font-weight: 700;
 	font-size: 16px;
 	line-height: 19px;
@@ -58,6 +60,8 @@
 		}
 			
 	}
+
+
 	&:hover{
 		color: #FFFFFF;
 		background: #FE5F1E;
@@ -87,4 +91,81 @@
 			}
 		}
 	}
+}
+.backToHome {
+	cursor: pointer;
+		font-weight: 700;
+			font-size: 16px;
+			line-height: 19px;
+			color: #CACACA;;
+			padding: 11px 23px;
+			background: #FFFFFF;
+			border: 1px solid #CACACA;;
+			border-radius: 30px;
+		
+			span {
+		
+				&:last-child {
+					margin-right: 0px;
+				}
+		
+				&:first-child {
+					padding-left: 5px;
+					margin-left: 10px;
+					position: relative;
+		
+					&::before {
+						content: '';
+						position: absolute;
+						top: 5px;
+						left: -16px;
+						height: 2px;
+						width: 12px;
+						background: #CACACA;
+						transform: rotate(-45deg);
+					}
+		
+					&::after {
+						content: '';
+						position: absolute;
+						top: 12px;
+						left: -16px;
+						height: 2px;
+						width: 12px;
+						background: #CACACA;;
+						transform: rotate(45deg);
+		
+					}
+				}
+		
+			}
+		
+		
+			&:hover {
+				box-shadow: 0px 0px 3px 3px rgba(175, 173, 173, 0.25) ;
+				transition: all 0.5s;
+				span {
+					&:first-child {
+						&::before{
+							content: '';
+							position: absolute;
+								top: 5px;
+								left: -23px;
+								height: 2px;
+								width: 12px;
+								transition: all 0.5s;
+						}
+							&::after {
+									content: '';
+										position: absolute;
+								top: 12px;
+								left: -23px;
+								height: 2px;
+								width: 12px;
+								transition: all 0.5s;
+								
+							}
+					}
+				}
+			}
 }

@@ -1,27 +1,40 @@
-import classNames from "classnames";
 import { FC, useState } from "react";
+
 import PopUp from "../ui/PopUp/PopUp";
+
+import { useAction } from "../../hooks/useAction";
+
+import classNames from "classnames";
+
 import styles from './Filter.module.scss';
+
 interface FilterProps {
 
 }
+
 const array = ['Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
+
 const Filter: FC<FilterProps> = () => {
 	const [itemSelected, setItemSelected] = useState<number | null>(null);
-	const onSelectedHandler = (value: string, index: number): void => {
+
+	const { SortPizzaByTypeAC, fetchPizzas } = useAction()
+
+	const onSelectedHandler = (index: number | null): void => {
 		setItemSelected(index)
-		console.log(value)
+		fetchPizzas(index)
+
+		console.log(index)
 	}
 	return (
 		<div className={styles.content}>
 			<div className={styles.filter}>
-				<div onClick={() => setItemSelected(null)} className={classNames(styles.item, { [styles.active]: itemSelected === null })}>Все</div>
+				<div onClick={() => onSelectedHandler(null)} className={classNames(styles.item, { [styles.active]: itemSelected === null })}>Все</div>
 				{array.map((elem, index) => (
-					<div onClick={() => onSelectedHandler(elem, index)} className={classNames(styles.item, { [styles.active]: index === itemSelected })}>{elem}</div>
+					<div key={elem + index} onClick={() => onSelectedHandler(index)} className={classNames(styles.item, { [styles.active]: index === itemSelected })}>{elem}</div>
 				))
 				}
 			</div>
-			<PopUp />
+			<PopUp itemSelected={itemSelected} />
 		</div >
 	);
 }

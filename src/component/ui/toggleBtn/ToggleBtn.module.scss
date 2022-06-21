@@ -1,0 +1,75 @@
+.toggleBtn{
+	cursor: pointer;
+	padding: 12px;
+	background: #FFFFFF;
+	border-radius: 50px;
+}
+.toggleBtn.increment{
+	cursor: pointer;
+	position: relative;
+	border: 2px solid #FE5F1E;
+	span{
+		&::before{
+			content: "";
+			position: absolute;
+			top: 11px;
+			right: 6px;
+			width: 12px;
+			height: 2px;
+			background: #FE5F1E;
+		}
+		&::after{
+			content: "";
+			position: absolute;
+			top: 11px;
+			right: 6px;
+			width: 12px;
+			height: 2px;
+			background: #FE5F1E;
+			transform: rotate(90deg);
+		}
+	}
+}
+.toggleBtn.clear{
+	cursor: pointer;
+	position: relative;
+	border: 2px solid #D0D0D0;
+	span{
+		&::before{
+			content: "";
+			position: absolute;
+			top: 11px;
+			right: 6px;
+			width: 12px;
+			height: 2px;
+			background: #D0D0D0;
+			transform: rotate(-45deg);
+		}
+		&::after{
+			content: "";
+			position: absolute;
+			top: 11px;
+			right: 6px;
+			width: 12px;
+			height: 2px;
+			background: #D0D0D0;
+			transform: rotate(45deg);
+		}
+	}
+}
+.toggleBtn.decrement{
+	cursor: pointer;
+	position: relative;
+	border: 2px solid #FE5F1E;
+	span{
+		&::before{
+			content: "";
+			position: absolute;
+			top: 11px;
+			right: 6px;
+			width: 12px;
+			height: 2px;
+			background: #FE5F1E;
+		}
+	}
+}

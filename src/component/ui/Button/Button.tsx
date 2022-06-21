@@ -1,17 +1,23 @@
+
 import { FC } from "react";
+
 import styles from './Button.module.scss';
 
-interface ButtonProps {
-	isCartBtn: boolean;
-	text: string;
-	count?: number | null;
+import classNames from "classnames";
 
+interface ButtonProps {
+	isCartBtn?: boolean;
+	backBtn?: boolean;
+	isCardBtn?: boolean;
+	text: string | number;
+	count?: number | null;
+	onClick?: () => void
 }
 
-const Button: FC<ButtonProps> = ({ isCartBtn, text, count }) => {
+const Button: FC<ButtonProps> = ({ onClick, isCartBtn, text, count, backBtn, isCardBtn }) => {
 	return (
-		<button className={isCartBtn ? styles.cartBtn : styles.cardBtn}>
-			<span className={styles.price}>{text}</span>
+		<button onClick={onClick} className={classNames({ [styles.cartBtn]: isCartBtn, [styles.cardBtn]: isCardBtn, [styles.backToHome]: backBtn })}>
+			<span className={styles.price}>{text} </span>
 			<span className={styles.count}>{count}</span>
 		</button>
 	);

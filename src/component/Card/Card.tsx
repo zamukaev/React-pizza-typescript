@@ -1,8 +1,16 @@
-import { FC, useState } from "react";
-import styles from './Card.module.scss';
-import img1 from '../../assets/01.png'
-import Button from "../ui/Button/Button";
+import { FC, useEffect, useState } from "react";
+
 import classNames from "classnames";
+
+import Button from "../ui/Button/Button";
+
+import { useAction } from "../../hooks/useAction";
+import { addToLC } from "../../hok";
+
+import { ICart } from "../../types/pizzaTypes";
+
+import styles from './Card.module.scss';
+
 interface CardProps {
 	id: number;
 	articul: string;
@@ -14,18 +22,38 @@ interface CardProps {
 	type: string[];
 }
 
-const Card: FC<CardProps> = ({ articul, id, img, price, rating, size, title, type }) => {
+const Card: FC<CardProps> = ({ articul, id, img, price, size, title, type }) => {
+
 	const [doughSelected, setDoughSelected] = useState<number>(0);
-	const [sizeSelected, setSizeSelected] = useState<number>(0)
+	const [doughType, setDoughType] = useState<string>(type[doughSelected]);
+	const [sizeSelected, setSizeSelected] = useState<number>(0);
+
+	const { getCartAC } = useAction()
 
 	const onSelectTypeHandler = (value: string, index: number): void => {
 		setDoughSelected(index)
-		console.log(value)
 	}
+
 	const onSelectSizeHandler = (size: number, index: number) => {
 		setSizeSelected(index)
-		console.log(size)
+
 	}
+	const addToCart = (cart: ICart) => {
+		addToLC(cart);
+		getCartFormLC()
+	}
+
+	useEffect(() => {
+		getCartFormLC()
+	}, [])
+
+	const getCartFormLC = () => {
+		if (localStorage.getItem("cart")) {
+			let cartItem = JSON.parse(localStorage.getItem("cart") || '')
+			getCartAC(cartItem)
+		}
+	}
+
 	return (
 		<div className={styles.card}>
 			<div className={styles.column}>
@@ -47,11 +75,14 @@ const Card: FC<CardProps> = ({ articul, id, img, price, rating, size, title, typ
 				</div>
 				<div className={styles.footer}>
 					<span className={styles.price}>от {price} ₽</span>
-					<div className={styles.button}><Button text="Добавить" isCartBtn={false} /></div>
+					<div className={styles.button}>
+						<Button
+							onClick={() => addToCart({ articul, id, img, price, title, type: doughType, size: sizeSelected, count: 1, totalPrice: price })}
+							text="Добавить" isCardBtn />
+					</div>
 				</div>
 			</div>
 		</div >
 	);
 }
-
 export default Card;

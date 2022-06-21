@@ -1,4 +1,5 @@
 .popup{
+	cursor: pointer;
 	align-self: center;
 	position: relative;
 	.selectedValue{
@@ -43,12 +44,20 @@
 		/* identical to box height */		
 		letter-spacing: 0.015em;
 		color: #000000;
+		&:hover{
+			color: #FE5F1E;
+			background: rgba(254, 95, 30, 0.05);
+		}
 		
 	}
 	.item.active{
 		color: #FE5F1E;
 		background: rgba(254, 95, 30, 0.05);
 	}
+}
+.selectBody.active{
+		opacity: 1;
+		visibility: visible;
 }
 
 
