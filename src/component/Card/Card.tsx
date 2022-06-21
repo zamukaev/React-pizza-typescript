@@ -10,6 +10,7 @@ import { addToLC } from "../../hok";
 import { ICart } from "../../types/pizzaTypes";
 
 import styles from './Card.module.scss';
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 interface CardProps {
 	id: number;
@@ -23,21 +24,19 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ articul, id, img, price, size, title, type }) => {
-
-	const [doughSelected, setDoughSelected] = useState<number>(0);
-	const [doughType, setDoughType] = useState<string>(type[doughSelected]);
-	const [sizeSelected, setSizeSelected] = useState<number>(0);
+	const [doughType, setDoughType] = useState<string>(type[0]);
+	const [sizeSelected, setSizeSelected] = useState<number>(size[0]);
 
 	const { getCartAC } = useAction()
 
 	const onSelectTypeHandler = (value: string, index: number): void => {
-		setDoughSelected(index)
+		setDoughType(type[index])
 	}
 
-	const onSelectSizeHandler = (size: number, index: number) => {
-		setSizeSelected(index)
-
+	const onSelectSizeHandler = (value: number, index: number) => {
+		setSizeSelected(size[index])
 	}
+
 	const addToCart = (cart: ICart) => {
 		addToLC(cart);
 		getCartFormLC()
@@ -64,13 +63,13 @@ const Card: FC<CardProps> = ({ articul, id, img, price, size, title, type }) => 
 						{type.map((elem, index) => (<div
 							onClick={() => onSelectTypeHandler(elem, index)}
 							key={elem}
-							className={classNames(styles.item, { [styles.active]: index === doughSelected })}>{elem}</div>))}
+							className={classNames(styles.item, { [styles.active]: elem === doughType })}>{elem}</div>))}
 					</div>
 					<div className={styles.doughSm}>
 						{size.map((size, index) => (<div
 							onClick={() => onSelectSizeHandler(size, index)}
 							key={size}
-							className={classNames(styles.item, { [styles.active]: index === sizeSelected })}>{size} cm</div>))}
+							className={classNames(styles.item, { [styles.active]: size === sizeSelected })}>{size} cm</div>))}
 					</div>
 				</div>
 				<div className={styles.footer}>

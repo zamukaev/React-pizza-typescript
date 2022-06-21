@@ -28,7 +28,7 @@ const cartReducer = (state = initialState, action: CartAction): CartState => {
 			}
 		case CartActionTypes.REMOVE_CART_FROM_LS:
 			return {
-				...state, isLoading: false, error: null, cart: [...action.payload],
+				...state, isLoading: false, error: null, cart: [...action.payload], totalCount: 0, totalPrice: 0,
 			}
 		case CartActionTypes.FETCH_CART_ERROR_ACTION:
 			return {

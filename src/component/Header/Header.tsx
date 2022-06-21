@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import logo from '../../assets/icons/02.svg';
@@ -7,13 +7,17 @@ import Button from "../ui/Button/Button";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 import styles from './Header.module.scss';
+import { useAction } from "../../hooks/useAction";
 
 interface HeaderProps {
 
 }
 
 const Header: FC<HeaderProps> = () => {
-	const { totalCount, totalPrice } = useTypedSelector(state => state.cart)
+	const { totalCount, totalPrice } = useTypedSelector(state => state.cart);
+
+
+
 	return (
 		<header className={styles.header}>
 			<Link to="/" className={styles.headerLeft}>

@@ -1,5 +1,5 @@
 import { FC, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import CartItem from "./CartItem/CartItem";
 import Button from "../ui/Button/Button";
@@ -16,6 +16,8 @@ import styles from './Cart.module.scss';
 const Cart: FC = () => {
 	const { cart, totalCount, totalPrice, isLoading, error } = useTypedSelector(state => state.cart);
 	const { getCartAC, removeCartAC } = useAction();
+
+	const navigate = useNavigate();
 
 	const incrementCart = (cart: ICart) => {
 		addToLC(cart);
@@ -43,6 +45,13 @@ const Cart: FC = () => {
 	const removeCart = () => {
 		localStorage.removeItem("cart");
 		getCartFormLC()
+	}
+	const cartCheckout = () => {
+		navigate("/");
+		if (localStorage.getItem("cart")) {
+			localStorage.removeItem("cart");
+			removeCartAC([])
+		}
 	}
 
 	useEffect(() => {
@@ -92,7 +101,7 @@ const Cart: FC = () => {
 				<Link to="/">
 					<Button backBtn isCartBtn={false} text={'Вернуться назад'} />
 				</Link>
-				<Button isCartBtn text={'Оплатить сейчас'} />
+				<Button isCartBtn onClick={cartCheckout} text={'Оплатить сейчас'} />
 			</div>
 
 		</div>
