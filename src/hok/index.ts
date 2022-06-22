@@ -28,12 +28,12 @@ export const decrementCartLC = (cart: ICart) => {
 		obj = JSON.parse(localStorage.getItem("cart") || "");
 		obj.forEach((item: ICart) => {
 			if (item.articul === cart.articul) {
-				if (item.count !== 1) {
+				if (item.count >= 1) {
 					item.count--;
 					item.totalPrice -= item.price;
 					localStorage.setItem("cart", JSON.stringify([...obj]));
 				}
-				if (item.count === 1) {
+				if (item.count < 1) {
 					let obj2: ICart[] = obj.filter((item: ICart) => item.articul !== cart.articul)
 					localStorage.setItem("cart", JSON.stringify([...obj2]));
 				}
