@@ -8,13 +8,9 @@ import classNames from "classnames";
 
 import styles from './Filter.module.scss';
 
-interface FilterProps {
-
-}
-
 const array = ['Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
-const Filter: FC<FilterProps> = () => {
+const Filter: FC = () => {
 	const [itemSelected, setItemSelected] = useState<number | null>(null);
 
 	const { SortPizzaByTypeAC, fetchPizzas } = useAction()

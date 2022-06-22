@@ -7,16 +7,10 @@ import Button from "../ui/Button/Button";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 import styles from './Header.module.scss';
-import { useAction } from "../../hooks/useAction";
 
-interface HeaderProps {
+const Header: FC = () => {
 
-}
-
-const Header: FC<HeaderProps> = () => {
 	const { totalCount, totalPrice } = useTypedSelector(state => state.cart);
-
-
 
 	return (
 		<header className={styles.header}>

@@ -10,7 +10,6 @@ interface ToggleBtnProps {
 	isDerement?: boolean;
 	isClear?: boolean
 	onClickHandler: () => void;
-
 }
 
 const ToggleBtn: FC<ToggleBtnProps> = ({ isIncrement, isDerement, isClear, onClickHandler }) => {

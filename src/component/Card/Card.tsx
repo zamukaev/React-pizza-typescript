@@ -11,6 +11,7 @@ import { ICart } from "../../types/pizzaTypes";
 
 import styles from './Card.module.scss';
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import Orderpopup from "../ui/Orderpopup/Orderpopup";
 
 interface CardProps {
 	id: number;
@@ -24,8 +25,12 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ articul, id, img, price, size, title, type }) => {
+
 	const [doughType, setDoughType] = useState<string>(type[0]);
+
 	const [sizeSelected, setSizeSelected] = useState<number>(size[0]);
+
+	const [vizible, setVizible] = useState<boolean>(false);
 
 	const { getCartAC } = useAction()
 
@@ -38,13 +43,13 @@ const Card: FC<CardProps> = ({ articul, id, img, price, size, title, type }) => 
 	}
 
 	const addToCart = (cart: ICart) => {
+		setVizible(true)
 		addToLC(cart);
 		getCartFormLC()
+		setTimeout(() => {
+			setVizible(false)
+		}, 2000)
 	}
-
-	useEffect(() => {
-		getCartFormLC()
-	}, [])
 
 	const getCartFormLC = () => {
 		if (localStorage.getItem("cart")) {
@@ -53,8 +58,13 @@ const Card: FC<CardProps> = ({ articul, id, img, price, size, title, type }) => 
 		}
 	}
 
+	useEffect(() => {
+		getCartFormLC()
+	}, [])
+
 	return (
 		<div className={styles.card}>
+			{vizible && <Orderpopup text="пицца добавлена в корзину ...!" />}
 			<div className={styles.column}>
 				<div className={styles.image}><img src={img} alt="" /></div>
 				<h3 className={styles.title}>{title}</h3>

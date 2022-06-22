@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import CartItem from "./CartItem/CartItem";
@@ -12,10 +12,15 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { ICart } from "../../types/pizzaTypes";
 
 import styles from './Cart.module.scss';
+import Orderpopup from "../ui/Orderpopup/Orderpopup";
 
 const Cart: FC = () => {
 	const { cart, totalCount, totalPrice, isLoading, error } = useTypedSelector(state => state.cart);
+
 	const { getCartAC, removeCartAC } = useAction();
+
+	const [vizible, setVizible] = useState<boolean>(false)
+
 
 	const navigate = useNavigate();
 
@@ -25,29 +30,35 @@ const Cart: FC = () => {
 	}
 
 	const decrement = (cart: ICart) => {
-		decrementCartLC(cart)
+		decrementCartLC(cart);
 		getCartFormLC();
 	}
 
 	const clearCart = (articul: string) => {
 		clearCartLS(articul);
-		getCartFormLC()
+		getCartFormLC();
 	}
 
 	const getCartFormLC = () => {
 		if (localStorage.getItem("cart")) {
 			getCartAC(JSON.parse(localStorage.getItem("cart") || ""));
 		} else {
-			removeCartAC([])
+			removeCartAC([]);
 		}
 	}
 
 	const removeCart = () => {
 		localStorage.removeItem("cart");
-		getCartFormLC()
+		getCartFormLC();
 	}
 	const cartCheckout = () => {
-		navigate("/");
+		setVizible(true);
+
+		setTimeout(() => {
+			setVizible(false);
+			navigate("/");
+		}, 1000);
+
 		if (localStorage.getItem("cart")) {
 			localStorage.removeItem("cart");
 			removeCartAC([])
@@ -59,7 +70,13 @@ const Cart: FC = () => {
 	}, [])
 
 	if (!cart.length) {
-		return (<Empty />);
+		return (
+			<>
+				{vizible && <Orderpopup text="ваш заказ принят!" isCart={true} />}
+				<Empty />
+			</>
+		);
+
 	}
 
 	if (isLoading) {
@@ -72,6 +89,7 @@ const Cart: FC = () => {
 
 	return (
 		<div className={styles.cart}>
+
 			<div className={styles.top}>
 				<h2 className={styles.title}><span></span> Корзина</h2>
 				<div className={styles.clearBtn} onClick={removeCart} > <span></span>Очистить корзину</div>

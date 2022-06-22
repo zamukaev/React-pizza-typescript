@@ -11,9 +11,9 @@ export const addToLC = (cart: ICart) => {
 		let old2 = old.filter((item: ICart) => {
 			if (item.articul === cart.articul) {
 				item.count += 1;
-				item.totalPrice += item.price
+				item.totalPrice += item.price;
 			}
-			return true
+			return true;
 		});
 
 		localStorage.setItem("cart", JSON.stringify([...old2]));
@@ -28,16 +28,17 @@ export const decrementCartLC = (cart: ICart) => {
 		obj = JSON.parse(localStorage.getItem("cart") || "");
 		obj.forEach((item: ICart) => {
 			if (item.articul === cart.articul) {
-				if (item.count > 1) {
+				if (item.count !== 1) {
 					item.count--;
 					item.totalPrice -= item.price;
-					localStorage.setItem("cart", JSON.stringify([...obj]))
-				} else {
-					let obj2: ICart[] = obj.filter((item: ICart) => item.count !== 1)
-					console.log(obj2)
-					localStorage.setItem("cart", JSON.stringify([...obj2]))
+					localStorage.setItem("cart", JSON.stringify([...obj]));
+				}
+				if (item.count === 1) {
+					let obj2: ICart[] = obj.filter((item: ICart) => item.articul !== cart.articul)
+					localStorage.setItem("cart", JSON.stringify([...obj2]));
 				}
 			}
+
 		})
 	}
 }

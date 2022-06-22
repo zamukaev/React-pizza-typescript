@@ -6,11 +6,7 @@ import Button from '../../ui/Button/Button';
 
 import styles from './Empty.module.scss';
 
-interface EmptyProps {
-
-}
-
-const Empty: FC<EmptyProps> = () => {
+const Empty: FC = () => {
 	return (
 		<div className={styles.empty}>
 			<div className={styles.title}>Корзина пустая	😕</div>
