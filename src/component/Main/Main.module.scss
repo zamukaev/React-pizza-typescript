@@ -1,8 +1,12 @@
-.contant{
+.content{
 	display: flex;
 	flex-wrap: wrap;
 	margin: -15px;
 	justify-content:space-between;
+	@media (max-width:1200px) {
+		justify-content: space-evenly;
+	}
+	margin-top:200px;
 	.myloader{
 		margin: 15px;
 		flex: 1 0 20%;

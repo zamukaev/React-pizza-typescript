@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.scss';
-import Routs from './Routes/Routes';
+import Routes from './Routes/Routes';
 
 function App() {
 	return (
-		<Routs />
+		<Routes />
 	);
 }
 

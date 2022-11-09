@@ -26,23 +26,20 @@ const Main: FC<MainProps> = () => {
 		return <h1>{error}</h1>
 	}
 	return (
-		<>
-			<Filter />
-			<div className={styles.contant}>
-				{isLoading && arr.map((item: any) => <div key={item} className={styles.myloader}><MyLoader /></div>)}
-				{pizzas.map(pizza => (
-					<Card key={pizza.id}
-						articul={pizza.articul}
-						id={pizza.id}
-						img={pizza.img}
-						price={pizza.price}
-						rating={pizza.rating}
-						size={pizza.size}
-						title={pizza.title}
-						type={pizza.type}
-					/>))}
-			</div>
-		</>
+		<div className={styles.content}>
+			{isLoading && arr.map((item: any) => <div key={item} className={styles.myloader}><MyLoader /></div>)}
+			{pizzas.map(pizza => (
+				<Card key={pizza.id}
+					articul={pizza.articul}
+					id={pizza.id}
+					img={pizza.img}
+					price={pizza.price}
+					rating={pizza.rating}
+					size={pizza.size}
+					title={pizza.title}
+					type={pizza.type}
+				/>))}
+		</div>
 	);
 }
 export default Main;

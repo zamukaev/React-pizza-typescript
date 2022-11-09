@@ -1,13 +1,19 @@
 .cart{
 	min-height: 100%;
-	max-width: 1000px;
-	margin: 0 auto;
+	margin-top: 200px;
 	display: flex;
 	flex-direction: column;
 	.top{
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+			@media (max-width:740px) {
+					flex-direction: column;
+					align-items: flex-start;
+					h2{
+						margin-bottom: 10px;
+					}
+				}
 	.title{
 		font-weight: 700;
 		font-size: 32px;
@@ -26,10 +32,18 @@
 	.cartItem{
 		flex: 0 0 auto;
 		margin:50px 0px 100px 0px;
+		display: flex;
+		flex-direction: column;	
 	}
 	.infos{
 			display: flex;
 			justify-content: space-between;
+			@media (max-width:740px) {
+				flex-direction: column;
+				.totalPizzes{
+					margin-bottom: 10px;
+				}
+			}
 		.totalPizzes{
 			font-weight: 400;
 			font-size: 22px;
@@ -56,5 +70,12 @@
 		margin-top: 30px;
 		display: flex;
 		justify-content: space-between;
+			@media (max-width:740px) {
+					flex-direction: column;
+					align-items: flex-start;
+					a{
+						margin-bottom: 10px;
+					}
+				}
 	}
 }

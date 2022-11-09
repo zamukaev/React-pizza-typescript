@@ -2,7 +2,13 @@
 	cursor: pointer;
 	display: flex;
 	justify-content: space-between;
-	margin-bottom: 50px;
+	max-width: 1400px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	@media (max-width:740px) {
+		display: none;
+		
+	}
 	.filter{
 		display: flex;
 		justify-content: space-between;

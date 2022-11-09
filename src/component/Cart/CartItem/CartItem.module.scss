@@ -11,8 +11,9 @@
 		align-items: center;
 		flex: 0 1 300px;
 		.image{
+			max-width: 60px;
 			img{
-				max-width: 60px;
+				max-width: 100%;
 			}
 			margin-right: 7px;
 		}
@@ -26,6 +27,10 @@
 				line-height: 27px;
 				letter-spacing: 0.01em;
 				color: #000000;
+				@media (max-width:740px) {
+						font-size: 16px;
+						line-height: 20px;
+					}
 			}
 			.text{
 				font-weight: 400;
@@ -33,6 +38,10 @@
 				line-height: 22px;
 				letter-spacing: 0.01em;
 				color: #8D8D8D;
+				@media (max-width:740px) {
+						font-size: 14px;
+						line-height: 18px;
+					}
 			}
 		}
 	}
@@ -40,6 +49,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		margin: 0px 5px;
 		.decrement{
 
 		}
@@ -50,6 +60,10 @@
 			line-height: 27px;
 			letter-spacing: 0.01em;
 			color: #000000;
+			@media (max-width:740px) {
+					font-size: 16px;
+					line-height: 20px;
+				}
 		}
 		.increment{}
 	}
@@ -64,6 +78,10 @@
 			line-height: 27px;
 			letter-spacing: 0.01em;
 			color: #000000;
+			@media (max-width:740px) {
+					font-size: 16px;
+					line-height: 20px;
+				}
 		}
 		.totalPrice{
 			margin-right: 10px;
@@ -72,6 +90,10 @@
 				line-height: 27px;
 				letter-spacing: 0.01em;
 				color: #000000;
+				@media (max-width:740px) {
+						font-size: 16px;
+						line-height: 20px;
+					}
 
 		}
 		.clear{}

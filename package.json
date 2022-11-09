@@ -16,6 +16,7 @@
     "@types/redux-thunk": "^2.1.0",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
+    "multer": "^1.4.5-lts.1",
     "node-sass": "^7.0.1",
     "react": "^18.1.0",
     "react-content-loader": "^6.2.0",

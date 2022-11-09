@@ -1,9 +1,20 @@
-.header{
+.header{	
+		padding: 0px 15px;
+		position: fixed;
+		width: 100%;
+		top: 0;
+		left: 0;
+		background: #ffff;
+		z-index: 10;
+}
+.container{
+	max-width: 1400px;
+	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 60px;
-	
+	margin-top:10px;
+	margin-bottom: 30px;
 	.headerLeft{
 		display: flex;
 		align-items: center;
@@ -28,4 +39,16 @@
 			}
 		}
 	}
+
+		a{
+			button{
+				@media (max-width:740px) {
+					position: fixed;
+					top: 100px;
+					right: 10px;
+
+				}
+			}
+		}
+	
 }
