@@ -1,5 +1,5 @@
 # About this project
-### online pizza ordering shop <a href="https://calm-hamlet-33910.herokuapp.com/">(demo)</a>
+### online pizza ordering shop <a href="https://react-pizza-typescript-tau.vercel.app/">(demo)</a>
 # Main functions:
 
 <ul>
